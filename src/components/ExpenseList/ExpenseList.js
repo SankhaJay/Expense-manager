@@ -1,6 +1,6 @@
 import Card from "../../common/Card/card";
 import ExpenseItem from "../ExpenseItem/ExpenseItem";
-import './ExpenseList.css';
+import "./ExpenseList.css";
 
 const ExpenseList = (props) => {
   const { expenses } = props;
@@ -17,6 +17,6 @@ const ExpenseList = (props) => {
       })}
     </Card>
   );
-}
+};
 
 export default ExpenseList;

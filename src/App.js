@@ -26,9 +26,9 @@ const App = () => {
 
   return (
     <div>
-      <ExpenseList expenses={expenses}/>
+      <ExpenseList expenses={expenses} />
     </div>
   );
-}
+};
 
 export default App;
