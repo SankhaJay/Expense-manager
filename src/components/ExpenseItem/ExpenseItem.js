@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import DateElement from "../DateElement/DateElement";
 import Card from "../../common/Card/card";
 import "./ExpenseItem.css";
