@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import "./App.css";
 import ExpenseList from "./components/ExpenseList/ExpenseList";
@@ -30,12 +30,14 @@ const App = () => {
   const [expenses, setExpenses] = useState(sampleExpenses);
 
   const addExpenseDataHandler = (expenseDataEntered) => {
-    setExpenses((prevState) => {return [expenseDataEntered, ...prevState]});
+    setExpenses((prevState) => {
+      return [expenseDataEntered, ...prevState];
+    });
   };
-
+  
   return (
     <div>
-      <NewExpense onAddExpenseData={addExpenseDataHandler}/>
+      <NewExpense onAddExpenseData={addExpenseDataHandler} />
       <ExpenseList expenses={expenses} />
     </div>
   );

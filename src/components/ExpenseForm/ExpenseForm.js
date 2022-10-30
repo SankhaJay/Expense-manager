@@ -16,7 +16,7 @@ const ExpenseForm = (props) => {
   };
   const amountChangeHandler = (event) => {
     setFormState((prevState) => {
-      return { ...prevState, amount: event.target.value };
+      return { ...prevState, amount: +event.target.value };
     });
   };
   const dateChangeHandler = (event) => {
