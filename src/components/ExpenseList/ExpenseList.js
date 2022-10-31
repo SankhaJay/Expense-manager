@@ -1,83 +1,76 @@
 import React, { useState } from "react";
 
 import Card from "../../common/Card/card";
-import Chart from "../Chart/Chart-Component/Chart";
+import ExpensesChart from "../ExpenseChart";
 import ExpensesFilter from "../ExpenseFilter/ExpensesFilter";
 import ExpenseItem from "../ExpenseItem/ExpenseItem";
 
 import "./ExpenseList.css";
 
-const chartData = [
-  {
-    value: 0,
-    label: "Jan",
-  },
-  {
-    value: 0,
-    label: "Feb",
-  },
-  {
-    value: 0,
-    label: "Mar",
-  },
-  {
-    value: 0,
-    label: "Apr",
-  },
-  {
-    value: 0,
-    label: "May",
-  },
-  {
-    value: 0,
-    label: "Jun",
-  },
-  {
-    value: 0,
-    label: "Jul",
-  },
-  {
-    value: 0,
-    label: "Aug",
-  },
-  {
-    value: 0,
-    label: "Sep",
-  },
-  {
-    value: 0,
-    label: "Oct",
-  },
-  {
-    value: 0,
-    label: "Nov",
-  },
-  {
-    value: 0,
-    label: "Dec",
-  },
-];
-
 const ExpenseList = (props) => {
+  const initChartData = [
+    {
+      value: 0,
+      label: "Jan",
+    },
+    {
+      value: 0,
+      label: "Feb",
+    },
+    {
+      value: 0,
+      label: "Mar",
+    },
+    {
+      value: 0,
+      label: "Apr",
+    },
+    {
+      value: 0,
+      label: "May",
+    },
+    {
+      value: 0,
+      label: "Jun",
+    },
+    {
+      value: 0,
+      label: "Jul",
+    },
+    {
+      value: 0,
+      label: "Aug",
+    },
+    {
+      value: 0,
+      label: "Sep",
+    },
+    {
+      value: 0,
+      label: "Oct",
+    },
+    {
+      value: 0,
+      label: "Nov",
+    },
+    {
+      value: 0,
+      label: "Dec",
+    },
+  ];
+
   const { expenses } = props;
   const [filterYear, setFilterYear] = useState("2019");
+  const [chartData, setChartData] = useState(initChartData);
 
   const filterYearChangeHandler = (filterYearSelected) => {
     setFilterYear(filterYearSelected);
-    chartData.forEach(element => {
-      element.value=0;
-    });
-
+    setChartData(initChartData);
   };
 
   const filteredExpenses = expenses.filter(
     (expense) => expense.date.getFullYear().toString() === filterYear
   );
-
-  filteredExpenses.forEach(expense => {
-    chartData[expense.date.getMonth()].value += expense.amount;
-  });
-
 
   return (
     <div>
@@ -86,7 +79,7 @@ const ExpenseList = (props) => {
           onFilterYearChange={filterYearChangeHandler}
           filterYearSelected={filterYear}
         />
-        <Chart data={chartData}/>
+        <ExpensesChart chartData={chartData} filteredExpenses={filteredExpenses} />
         {filteredExpenses.length === 0 && (
           <h2 className="expenses-list__fallback">No data to show</h2>
         )}
